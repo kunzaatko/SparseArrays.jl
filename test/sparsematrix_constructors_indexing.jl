@@ -54,6 +54,7 @@ end
     @test sparse(Any[1,2,3], Any[1,2,3], Any[1,1,1], 5, 4) == sparse([1,2,3], [1,2,3], [1,1,1], 5, 4)
     @test_throws MethodError sparse([CartesianIndex(1, 1, 1), CartesianIndex(2, 2, 2), CartesianIndex(3, 3, 3)], [1, 2, 4], [1, 2, 3], 3, 3) # Only 2D indices should work
     @test isequal(sparse([CartesianIndex(1, 1), CartesianIndex(2, 2), CartesianIndex(3, 3)], [1.0, 2.0, 3.0], 3, 3), sparse([1, 2, 3], [1, 2, 3], [1.0, 2.0, 3.0], 3, 3))
+    @test sparse([CartesianIndex(1, 1), CartesianIndex(2, 2), CartesianIndex(3, 3)], [1, 2, 3]) == sparse([1, 2, 3], [1, 2, 3], [1, 2, 3])
     # with combine
     @test sparse([1, 1, 2, 2, 2], [1, 2, 1, 2, 2], 1.0, 2, 2, +) == sparse([1, 1, 2, 2], [1, 2, 1, 2], [1.0, 1.0, 1.0, 2.0], 2, 2)
     @test sparse([1, 1, 2, 2, 2], [1, 2, 1, 2, 2], -1.0, 2, 2, *) == sparse([1, 1, 2, 2], [1, 2, 1, 2], [-1.0, -1.0, -1.0, 1.0], 2, 2)
